@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct CryptoTrackerApp: App {
+    @StateObject private var listVM = CryptoListViewModel()
+    @StateObject private var favs = FavoritesManager.shared
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CryptoListView()
+                .environmentObject(listVM)
+                .environmentObject(favs)
         }
     }
 }
+
